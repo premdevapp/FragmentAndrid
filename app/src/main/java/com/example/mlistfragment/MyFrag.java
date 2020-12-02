@@ -7,11 +7,27 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
+import androidx.fragment.app.ListFragment;
 
-public class MyFrag extends Fragment {
+import com.example.mlistfragment.data.CorseArrayAdapter;
+import com.example.mlistfragment.data.Course;
+import com.example.mlistfragment.data.CourseData;
+
+import java.util.List;
+
+public class MyFrag extends ListFragment {
+    List<Course> courses = new CourseData().courseList();
 
     public MyFrag() {
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        CorseArrayAdapter adapter = new CorseArrayAdapter(getActivity(), R.layout.course_list_itm, courses);
+        setListAdapter(adapter);
+
     }
 
     @Nullable
