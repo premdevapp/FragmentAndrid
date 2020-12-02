@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MListFragment</string>
+    <string name="large_screen">Large Screen</string>
+    <string name="course_name">Course Name</string>
 </resources>
