@@ -51,7 +51,7 @@ public class CourseListFragment extends ListFragment {
     }
 
     public interface CallBacks{
-        public void onItemSelected(Course course);
+        public void onItemSelected(Course course, int position);
     }
 
     @Override
@@ -60,7 +60,7 @@ public class CourseListFragment extends ListFragment {
         //Toast.makeText(getActivity(), "position "+position, Toast.LENGTH_SHORT).show();
 
         Course course = courses.get(position);
-        this.activity.onItemSelected(course);
+        this.activity.onItemSelected(course, position);
         //Toast.makeText(getActivity(), "course "+course.getCourseName(), Toast.LENGTH_SHORT).show();
     }
 

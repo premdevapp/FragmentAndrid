@@ -12,12 +12,28 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.mlistfragment.data.Course;
+import com.example.mlistfragment.data.CourseData;
 
 public class CourseDetailFragment extends Fragment {
     Course course;
 
     public CourseDetailFragment() {
 
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Bundle bundle = getArguments();
+
+        if (bundle != null && bundle.containsKey("course_id")){
+            int position = bundle.getInt("course_id");
+
+            course = new CourseData().courseList().get(position);
+
+
+
+        }
     }
 
     @Nullable
