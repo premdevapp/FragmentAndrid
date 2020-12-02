@@ -15,7 +15,7 @@ public class Course {
     }
 
     public int getImgResId(Context context){
-        return context.getResources().getIdentifier(this.courseName, "drawable", context.getPackageName());
+        return context.getResources().getIdentifier(this.courseImg, "drawable", context.getPackageName());
     }
 
     public String getCourseName() {
