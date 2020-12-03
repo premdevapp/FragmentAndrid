@@ -12,12 +12,15 @@ import com.example.mlistfragment.data.Course;
 
 public class MainActivity extends AppCompatActivity implements CourseListFragment.CallBacks {
 
+    private boolean twoPane = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
+        if (findViewById(R.id.detailContainer) != null) {
+            twoPane = true;
+        }
 
 /*
 
@@ -37,9 +40,26 @@ public class MainActivity extends AppCompatActivity implements CourseListFragmen
     public void onItemSelected(Course course, int position) {
         //Toast.makeText(this, "Hello", Toast.LENGTH_SHORT).show();
 
-        Intent intent = new Intent(MainActivity.this, CourseDetailActivity.class);
-        intent.putExtra("course_id", position);
-        startActivity(intent);
+        if (twoPane) {
+
+            Bundle bundle = new Bundle();
+            bundle.putInt("course_id", position);
+
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            CourseDetailFragment courseDetailFragment = new CourseDetailFragment();
+
+            courseDetailFragment.setArguments(bundle);
+
+            fragmentManager.beginTransaction().replace(R.id.detailContainer, courseDetailFragment).commit();
+
+
+        } else {
+            Intent intent = new Intent(MainActivity.this, CourseDetailActivity.class);
+            intent.putExtra("course_id", position);
+            startActivity(intent);
+
+        }
+
 
     }
 }
